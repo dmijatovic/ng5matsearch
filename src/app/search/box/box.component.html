@@ -1,0 +1,17 @@
+
+<mat-form-field class="example-form-field">
+  <input matInput type="text" 
+    placeholder="Clearable input" 
+    (keydown)="searchTerm($event)"
+    [(ngModel)]="searchValue"/>
+  
+  <button mat-button 
+    *ngIf="searchValue" 
+    matSuffix mat-icon-button 
+    aria-label="Clear" 
+    (click)="searchValue=''">
+  
+    <mat-icon>close</mat-icon>
+  
+  </button>
+</mat-form-field>

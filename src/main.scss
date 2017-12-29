@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+//material icons
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+//fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
+//theme
+@import './material/theme';
+@import './material/fixes';
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+//Basic layout
+body{
+  font-family: 'Open Sans', sans-serif;
+  padding:0;
+  margin:0;
+}
+
+@import './material/layout';
+
