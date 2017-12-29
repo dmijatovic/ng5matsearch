@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     'class':'app-page'
   }
 })
-export class PageComponent implements OnInit {
+export class PageLayout implements OnInit {
 
   constructor(private router:Router) { }
 

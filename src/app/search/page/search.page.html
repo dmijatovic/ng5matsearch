@@ -1,11 +1,12 @@
 
 <!-- SEARCH BOX -->
 <app-search-box
-  class="search-box">
+  class="search-box"
+  (search)="searchFor($event)">
 </app-search-box>
 
 <!-- SEARCH RESULTS -->
-<app-search-body
+<app-search-results
   class="search-results">
-</app-search-body>
+</app-search-results>
 

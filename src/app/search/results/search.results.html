@@ -1,0 +1,39 @@
+
+<!-- SEARCH RESULTS OUTPUT -->
+<section class="search-results-section">
+  <!--
+  <h1>Search results</h1>
+  -->
+  <div class="filter-selection-overview">
+    <p>Filters: OFF</p>
+  </div>
+
+  <div *ngIf="noResults===false && waitingForResults===false" 
+    class="search-results-content">
+    <p>
+      Here comes list of returned results
+    </p>
+  </div>
+
+  <!-- NOTHING FOUND -->
+  <div 
+    *ngIf="noResults"
+    class="search-results-none">
+    <h1>Nothing found </h1>
+  </div>
+
+  <!-- QUERING FOR RESULTS / LAODER -->
+  <div 
+    *ngIf="waitingForResults"
+    class="search-results-loading">
+    <h1> 
+      Searching high and low, 
+      above and beyond ... 
+    </h1>
+  </div>
+
+</section>
+
+
+
+

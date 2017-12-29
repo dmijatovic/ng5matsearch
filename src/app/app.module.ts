@@ -1,17 +1,22 @@
+//Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//App modules
 import { LayoutModule } from './layout/layout.module';
-
-
-import { AppRoot } from './app.root';
-import { HomeComponent } from './home/home.component';
-import { PageComponent } from './layout/page/page.component';
 import { SearchModule } from './search/search.module';
 
+//App components
+import { AppRoot } from './app.root';
+import { PageLayout } from './layout/page/page.component';
+import { HomePage } from './home/home.component';
+import { SearchPage } from './search/page/search.page';
+
+//App services
+//set services here only 
+//if these are shared throughout whole app
 const routes=[{
   path:'',
   redirectTo:'home',
@@ -20,31 +25,41 @@ const routes=[{
   path:'',
   component: AppRoot,
   children:[{
+    path:'',
+    component: PageLayout,
+    children:[{
+      path:'home',
+      component: HomePage  
+    },{
+      path:'search',
+      component:SearchPage
+    }]
+  /*},{
     path:'home',
-    component: PageComponent,
+    component: PageLayout,
     children:[{
       path:'',
-      component: HomeComponent
+      component: HomePage
     }]
   },{
     path:'search',
-    component: PageComponent,
+    component: PageLayout,
     children:[{
       path:'',
-      loadChildren:'./search/search.module#SearchModule'
-    }]    
+      component:SearchPage
+      //loadChildren:'./search/search.module#SearchModule'
+    }]*/    
   }]
 }]
 
 @NgModule({
   declarations: [
-    AppRoot,
-    HomeComponent
+    AppRoot, HomePage
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    LayoutModule, //SearchModule,
+    LayoutModule, SearchModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ ],

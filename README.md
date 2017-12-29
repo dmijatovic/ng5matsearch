@@ -1,6 +1,8 @@
-# Ng5mat
+# ng5 material searchbox 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.2.
+
+It is used to test customized angular material theme and some ideas for creating an search module. 
 
 ## Development server
 

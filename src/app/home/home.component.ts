@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
     'class':'app-body'
   }
 })
-export class HomeComponent implements OnInit {
+export class HomePage implements OnInit {
 
   constructor() { }
 

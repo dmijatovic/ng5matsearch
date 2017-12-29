@@ -1,0 +1,110 @@
+
+<section class="search-box-wrap">
+  <mat-form-field class="example-form-field">
+    <input matInput type="text"
+      placeholder="Search" 
+      (keydown)="term$.next($event)"
+      [(ngModel)]="searchValue"/>
+    
+    <button mat-button 
+      *ngIf="searchValue" 
+      matSuffix mat-icon-button 
+      aria-label="Clear" 
+      (click)="clearSearchValue()">
+    
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <nav class="search-box-nav">
+  
+    <button mat-button 
+      mat-icon-button 
+      (click)="startSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button mat-button 
+      mat-icon-button 
+      (click)="showFilter()">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+
+  </nav>
+</section>
+
+<section class="filter-section"
+  [class.open]="filterVisible">
+
+  <div class="filter-content mat-elevation-z3">
+    <div class="filter-header">
+      <h3>Filter</h3>
+    </div>
+    <div class="filter-body">
+      <div class="filter-panel flex-col">
+        <mat-form-field
+          class="filter-content-field">
+          <mat-select placeholder="Only when segment in"
+            [(ngModel)]="segmentIn"
+            multiple>
+            <!--<mat-option>All segments</mat-option>-->
+            <mat-option 
+              *ngFor="let s of segments" 
+              [value]="s.id">
+              {{ s.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+          class="filter-content-field">
+          <mat-select placeholder="Only when product in"
+            [(ngModel)]="productIn"
+            multiple>
+            <!--<mat-option>All segments</mat-option>-->
+            <mat-option 
+              *ngFor="let p of products" 
+              [value]="p.id">
+              {{ p.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <div class="filter-panel">
+        <div class="filter-content-group">
+          
+          <div class="title">
+            Types
+          </div>
+          
+          <div class="content">
+            <mat-checkbox 
+              *ngFor="let t of types"
+              class="filter-item"
+              [name]="t.id"
+              [(ngModel)]="t.checked"
+              color="primary">
+              {{t.label}}
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="filter-nav">
+      <button mat-raised-button
+        (click)="clearFilters()">
+        Clear
+      </button>
+
+      <button mat-raised-button
+        (click)="saveFilters()"
+        color="primary">
+        Save
+      </button>
+    </nav>
+
+  </div>
+  
+</section>

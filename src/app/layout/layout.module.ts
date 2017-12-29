@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { PageComponent } from './page/page.component';
+import { PageLayout } from './page/page.component';
 
 import { 
   MatToolbarModule, MatIconModule, MatButtonModule 
@@ -23,6 +23,7 @@ const routes=[{
     MatButtonModule,
     RouterModule
   ],
-  declarations: [HeaderComponent, FooterComponent, PageComponent]
+  declarations: [HeaderComponent, FooterComponent, PageLayout],
+  exports:[ PageLayout ]
 })
 export class LayoutModule { }
