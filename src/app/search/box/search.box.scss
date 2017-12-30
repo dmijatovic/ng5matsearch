@@ -13,10 +13,12 @@
 .filter-section{
   display:none;
   position:relative;
+  max-width:100%;
+  justify-content: flex-end;
 }
 
 .filter-section.open{
-  display:block;
+  display:flex;
 }
 
 .filter-content{    
@@ -24,7 +26,7 @@
   flex-direction:column;
   position:absolute;
   top:-10px;    
-  width:100%;
+  //width:100%;
   background-color: #fff;
   //border: 1px solid lightgrey;
   //box-shadow: 3px 3px 3px #666666;
@@ -42,30 +44,36 @@
 
   .filter-panel{
     display:flex;
+    padding: 24px 48px 24px 0px;
     //flex-direction:row -> is default
+  }
+
+  .filter-panel:last-child{
+    padding: 24px 0px;
   }
 }
 
 .filter-content-field{
   min-width: 320px;
-  padding: 24px 24px 0px 0px;
+  padding: 24px 0px;
 }
 
 .filter-content-group{
   display: flex;
   flex-direction: column;
-  padding: 16px 0px;
+  //padding: 16px 0px;
 
   .title{
     font-weight:600;
-    padding: 24px 0px 16px 0px;
+    padding: 0px 0px 16px 0px;
   }
   .content{
-    display:block;
+    //display:block;
+    //padding
   }
   
   .filter-item{
-    padding-right:16px;
+    padding:16px 24px 0px 0px;
   }
 }
 

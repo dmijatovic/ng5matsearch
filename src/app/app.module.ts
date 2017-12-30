@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //App modules
 import { LayoutModule } from './layout/layout.module';
 import { SearchModule } from './search/search.module';
+import { DragDropModule } from './dragdrop/drag.drop.module';
 
 //App components
 import { AppRoot } from './app.root';
 import { PageLayout } from './layout/page/page.component';
 import { HomePage } from './home/home.component';
 import { SearchPage } from './search/page/search.page';
+import { DragDropPage } from './dragdrop/page/drag.drop.page';
 
 //App services
 //set services here only 
@@ -23,17 +25,17 @@ const routes=[{
   pathMatch:'full',
 },{
   path:'',
-  component: AppRoot,
-  children:[{
-    path:'',
-    component: PageLayout,
-    children:[{
-      path:'home',
-      component: HomePage  
-    },{
-      path:'search',
-      component:SearchPage
-    }]
+  component: PageLayout,
+  children:[{    
+    path:'home',
+    component: HomePage  
+  },{
+    path:'search',
+    component: SearchPage
+  },{
+    path:'dragdrop',
+    component: DragDropPage
+  }]
   /*},{
     path:'home',
     component: PageLayout,
@@ -48,8 +50,7 @@ const routes=[{
       path:'',
       component:SearchPage
       //loadChildren:'./search/search.module#SearchModule'
-    }]*/    
-  }]
+    }]*/
 }]
 
 @NgModule({
@@ -59,7 +60,7 @@ const routes=[{
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    LayoutModule, SearchModule,
+    LayoutModule, SearchModule, DragDropModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ ],

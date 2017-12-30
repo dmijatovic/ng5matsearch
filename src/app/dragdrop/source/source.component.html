@@ -1,0 +1,28 @@
+<p>
+  Drag drop source works!
+</p>
+
+<section class="drag-fields-container flex-col">
+  
+  <div class="container-title">
+    <h4>Filters</h4>
+  </div>
+
+  <div class="container-body">
+    
+    <ul>
+      
+      <li *ngFor="let field of fields;"
+        draggable="true"
+        (dragstart)="startDrag($event)"
+        [attr.data-field-id]="field.id">
+
+          {{field.label}}
+
+      </li>
+    
+    </ul>
+  
+  </div>
+
+</section>
