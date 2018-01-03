@@ -41,7 +41,6 @@ export class DragDropSource implements OnInit {
     let data = this.fields.filter(i => i.id === fieldId);
 
     if (data){
-
       //set data 
       e.dataTransfer.setData("json",JSON.stringify(data));
       //set drop effect

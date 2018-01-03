@@ -1,0 +1,79 @@
+
+<section class="drop-container flex-col">
+  <div class="drop-container-title">
+    <h3>Condition group title</h3>
+  </div>
+  <div class="drop-container-body flex-row">
+    <div class="drop-operator-container">
+      Operator here
+    </div>
+
+    <div class="drop-items-area flex-row">
+      <div class="drop-container-exit-v"
+        (dragover)="onDragOverInvalid($event)">
+        TOP exiting valid area 
+      </div>
+
+      <div class="drop-container-exit-h"
+        (dragover)="onDragOverInvalid($event)">
+        LEFT exiting valid area
+      </div>
+
+      <!-- (dragover)="onDragOverDropArea($event)" -->
+      <div class="drop-item-area flex-col"
+        (dragenter)="onDragEnterDropArea($event)"        
+        [class.active]="active.area">
+
+        <div *ngFor="let item of conditions"
+          class="drop-item-node">
+
+          <table>
+            <tr>
+              <td>id</td>
+              <td>{{item.id}}</td>
+              <td>
+                <button mat-icon-button
+                  (click)="editCondition(item.cid)">
+                  <mat-icon>
+                    edit
+                  </mat-icon>
+                </button>
+                <button mat-icon-button
+                  (click)="deleteCondition(item.cid)">
+                  <mat-icon>
+                    delete
+                  </mat-icon>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>{{item.label}}</td>
+            </tr>
+          </table>
+
+        </div> 
+        
+        <div
+          (dragover)="onDragOverItem($event)"
+          (dragleave)="onDragLeaveItem($event)"
+          (drop)="onDropItem($event)" 
+          class="drop-item-dummy"
+          [class.active]="active.item">
+          
+          Drop your item here      
+        </div>
+      </div>
+
+      <div class="drop-container-exit-h"
+        (dragover)="onDragOverInvalid($event)">
+        RIGHT exiting valid area
+      </div>
+    
+      <div class="drop-container-exit-v"
+        (dragover)="onDragOverInvalid($event)">
+        BOTTOM exiting valid area
+      </div>
+    </div>
+  </div>
+</section>

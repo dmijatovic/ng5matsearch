@@ -13,86 +13,67 @@ export class DragDropTarget implements OnInit, OnDestroy {
   //active box to indicate
   active={
     area:false,
-    item:false
+    item:false,
+    newGroup:false,
   };
+  groups:any=[];
+  groups$:Subscription;
   //list of conditions
-  conditions:any=[];
-  conditions$:Subscription;
+  //conditions:any=[];
+  //conditions$:Subscription;
   constructor(
     private conSvc:DragDropConditionsService
   ) { }
 
   ngOnInit() {
-    this.conditions$ = this.conSvc.conditions$
-    .subscribe((c)=>{
-      if(c){
+    this.groups$ = this.conSvc.groups$
+    .subscribe((g)=>{
+      if(g){
         //debugger 
-        this.conditions = c;
+        this.groups = g;
       }
     }); 
   }
   /**
-   * Dragging over the area where we do 
-   * not accept new items to be dropped
+   * 
    * @param e 
    */
-  onDragOverInvalid(e){
-    console.log("Invalid drop area");
-    e.preventDefault();
-    e.dataTransfer.dropEffect = "none";
-    this.active.area = false;
+  onDragLeaveNewGroup(e){
+    console.log("drag leave...", e.currentTarget.className);
+    
+    this.active.newGroup = false;
   }
-  /**
-   * Draging over the area that accept items
-   * @param e 
-   */
-  onDragOverArea(e){
-    console.log("drag over area");
+  onDragOverAddNewGroup(e){
+    console.log("drag over...", e.currentTarget.className);
     e.preventDefault();
     e.dataTransfer.dropEffect = "copy";
-    this.active.area = true;
+    this.active.newGroup = true;
   }
-  /**
-   * Dragging over the dummy item that indicates
-   * where new item will be added 
-   * @param e 
-   */
-  onDragOverItem(e){
-    console.log("drag over item");
-    e.preventDefault();
-    e.dataTransfer.dropEffect = "link";
-    //this.active.area = true;
-    this.active.item = true;
-    //console.log("OnDragOver...", e);
-  }
-
-  onDropItem(e){
+  onDropNewGroup(e){
+    console.log("drop new group...", e.currentTarget.className);
+    //get data 
     e.preventDefault();
     //debugger
     let strData = e.dataTransfer.getData("json");
     let field = JSON.parse(strData);
     if (field.length == 1){
-      console.log("OnDropItem...", field[0]);
+      console.log("drop item...", field[0]);
       //add to collection
-      this.conSvc.addCondition({
-        ...field[0],
-        uid:this.conSvc.createUid()
+      this.conSvc.addGroup({
+        operator:"AND",
+        conditions:[{
+          ...field[0],
+          uid:this.conSvc.createUid()
+        }]
       });
-      //this.items.push(field[0]);
-      //remove focus
-      this.active.item = false;
-      this.active.area = false; 
+      this.active.newGroup = false; 
     }else{
       console.warn("Unexpected data array length on drop!");
     }
   }
 
-  deleteCondition(id){
-    console.log("delete item", id);
-    this.conSvc.deleteCondition(id);
-  }
-
   ngOnDestroy(){
-    this.conditions$.unsubscribe();
+    //this.conditions$.unsubscribe();
+    this.groups$.unsubscribe();
   }
 }

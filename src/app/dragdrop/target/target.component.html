@@ -2,54 +2,33 @@
   DragDrop target works!
 </p>
 
-<section class="drop-container flex-col">
-  <div class="drop-container-title">
-    <h3>Conditions here</h3>
-  </div>
-  <div class="drop-container-body flex-row"
-    (dragenter)="onDragOverInvalid($event)">
-    
-    <div class="drop-operator-container"
-      (dragenter)="onDragOverInvalid($event)">
-      Operator here
-    </div>
+<section class="target-page">
 
-    <div class="drop-items-area flex-col"
-      (dragover)="onDragOverArea($event)"
-      (drop)="onDropItem($event)" 
-      [class.active]="active.area">
+  <app-condition-group *ngFor="let group of groups"
+    [gid]="group.gid"
+    [operator]="group.operator"
+    [conditions]="group.conditions">
+  </app-condition-group>
 
-      <div *ngFor="let item of conditions"
-        class="drop-item-node">
-        <table>
-          <tr>
-            <td>id</td>
-            <td>{{item.id}}</td>
-            <td>
-              <button
-                (click)="deleteCondition(item.uid)">
-                Delete
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>name</td>
-            <td>{{item.label}}</td>
-          </tr>
-        </table>
-      </div>  
-
-      <div
-        (dragover)="onDragOverItem($event)" 
-        (drop)="onDropItem($event)" 
-        class="drop-item-dummy"
-        [class.active]="active.item">
-        
-        This is dummy item      
-      </div>
-
-    </div>
-
-
-  </div>
 </section>
+
+
+
+<section class="drop-container-dummy"
+  [class.active]="active.newGroup"
+  (dragover)="onDragOverAddNewGroup($event)"
+  (drop)="onDropNewGroup($event)"
+  (dragleave)="onDragLeaveNewGroup($event)">
+  <!-- NOTE 
+    do not use any child element
+    when using dragleave event to determine when 
+    users leaves drop area, because when entering 
+    the child element dragleave event on the parent 
+    element is fired
+  -->
+
+  Add new condition group
+
+</section>
+
+
