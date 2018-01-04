@@ -34,7 +34,7 @@ export class SearchBox implements OnInit {
   types:any=[];
   constructor(
     private searchSvc:SearchService
-  ) { 
+  ){ 
     //debugger
     //console.log("searchbox");
   }
