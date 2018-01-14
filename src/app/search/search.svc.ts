@@ -28,6 +28,7 @@ export class SearchService{
           {id:'seg4', label:'segment 4'}
         ]
       );
+      observer.error("");
       //send complete state
       observer.complete();
     });
