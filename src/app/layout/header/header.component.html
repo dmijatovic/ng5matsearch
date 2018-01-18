@@ -4,26 +4,15 @@
     <span>Header works!</span>
 
     <nav class="header-nav">
-      <button mat-icon-button
-        routerLink="/search">
+      
+      <button *ngFor="let item of menuItems" 
+        mat-icon-button
+        [routerLink]="item.routerLink">
         <mat-icon>
-          search
+          {{ item.matIco }}
         </mat-icon>
       </button>
       
-      <button mat-icon-button
-        routerLink="/dragdrop">
-        <mat-icon>
-          open_with
-        </mat-icon>
-      </button>
-
-      <button mat-icon-button
-        routerLink="/home">
-        <mat-icon>
-          home
-        </mat-icon>
-      </button>
     </nav>
     
   </mat-toolbar-row>
