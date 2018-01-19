@@ -1,0 +1,17 @@
+
+
+
+<section>
+  <div class="section-title">
+    Group title here
+  </div>
+
+  <div *ngFor="let field of fields"
+    class="field-row">
+
+    <label>{{ field.label }}</label>
+    <input 
+      [type]="field.type"/>
+    
+  </div>
+</section>

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './layout/layout.module';
 import { SearchModule } from './search/search.module';
 import { DragDropModule } from './dragdrop/drag.drop.module';
+import { FormsTestModule } from './forms/forms.module';
 
 //App components
 import { AppRoot } from './app.root';
@@ -15,6 +16,8 @@ import { PageLayout } from './layout/page/page.component';
 import { HomePage } from './home/home.component';
 import { SearchPage } from './search/page/search.page';
 import { DragDropPage } from './dragdrop/page/drag.drop.page';
+import { FormDemoPage } from './forms/page/form-demo-page';
+
 
 //App services
 //set services here only 
@@ -35,6 +38,9 @@ const routes=[{
   },{
     path:'dragdrop',
     component: DragDropPage
+  },{
+    path:'forms',
+    component: FormDemoPage
   }]
   /*},{
     path:'home',
@@ -61,6 +67,7 @@ const routes=[{
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule, SearchModule, DragDropModule,
+    FormsTestModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ ],
