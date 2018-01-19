@@ -1,8 +1,18 @@
+//import material theming to use variables
+@import '~@angular/material/theming';
+@import '../../../material/theme';
 
+:host{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .form-container{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   justify-items: flex-start;
+  max-width: 960px;
+  margin: auto;
 }

@@ -12,7 +12,7 @@ import { FormsService } from '../forms.service';
   }
 })
 export class FormDemoPage implements OnInit {
-  pageTitle="Form groups broken into components";
+  pageTitle="Form broken in components";
 
   formGroups:any=[];
   formMain:any;
@@ -58,9 +58,18 @@ export class FormDemoPage implements OnInit {
     let fields={}, formGroup;
 
     g.items.map((f)=>{
-
-      fields[f.fid] = this.createFormControl(f);
-
+      //checkbox type is multiple
+      if (f.controlType=='checkbox'){
+        //debugger
+        f.options.map((c)=>{
+          fields[c.fid] = this.createFormControl({
+            required: f.required,
+            default: c.default
+          });
+        })
+      }else{
+        fields[f.fid] = this.createFormControl(f);
+      }
     })
     //here is new form group
     formGroup = new FormGroup(fields);

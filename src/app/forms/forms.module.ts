@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import {
   MatFormFieldModule,
-  MatInputModule, MatRadioModule,
+  MatInputModule, MatRadioModule, MatCheckboxModule,
   MatSelectModule, MatButtonModule,
   MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
@@ -13,17 +13,18 @@ import {
 import { FormDemoPage } from './page/form-demo-page';
 import { GroupComponent } from './group/group.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     //material modules
-    MatInputModule, MatRadioModule,
+    MatInputModule, MatRadioModule, MatCheckboxModule,
     MatSelectModule, MatFormFieldModule,
     MatDatepickerModule, MatNativeDateModule,
     MatButtonModule
   ],
-  declarations: [FormDemoPage, GroupComponent]
+  declarations: [
+    FormDemoPage, GroupComponent
+  ]
 })
 export class FormsTestModule { }

@@ -1,5 +1,7 @@
-
+//import material theming to use variables
 @import '~@angular/material/theming';
+@import '../../../material/theme';
+
 
 :host{
   display: flex;
@@ -10,13 +12,13 @@
 .form-group-section{
   display:flex;
   flex-direction:column;
-  border: 1px solid grey;
+  border: 1px solid $app-color-border;
 
   .section-title{
     padding: 16px 8px;
     font-size: 22px;
     font-weight: 600;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid $app-color-border;
   }
 
   .section-body{
@@ -24,7 +26,17 @@
     //flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 16px 8px;
+    padding: 16px;
+
+    /*
+    .mat-form-field:first-child{
+      margin-left: 0px;
+    }*/
+
+    .mat-form-field{
+      padding: 0px 8px;
+    }
+
   }
 
 }
@@ -33,7 +45,7 @@
 
   .section-title{
     //background-color: red;
-    color: red;
+    color: mat-color($app-color-warn);
   }
 
   .section-title::after{
@@ -43,12 +55,30 @@
 
 .form-group-section.ng-touched.ng-valid{
   //border: 1px solid green;
-  .section-title{
+  /*.section-title{
     //background-color: green;
-    //color: green;
-  }
+    color: green;
+  }*/
 
   .section-title::after{
     content:'[valid]';
   }
+}
+
+.form-group-title{
+  padding: 16px 0px;
+}
+
+.mat-control-group{
+
+  .mat-radio-button {
+    //padding: 8px 0px;
+    line-height: 42px;
+  }
+
+  .mat-checkbox{
+    line-height: 44px;
+    //padding: 8px 0px;
+  }
+
 }
