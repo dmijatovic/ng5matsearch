@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 //Material
-import { 
+import {
   MatInputModule, MatIconModule, MatButtonModule,
   MatSelectModule, MatCheckboxModule
 } from '@angular/material';
@@ -28,11 +28,11 @@ const routes=[{
 @NgModule({
   imports: [
     CommonModule, FormsModule,
+    HttpClientModule,
     //material modules
     MatInputModule, MatIconModule,
     MatButtonModule, MatSelectModule,
     MatCheckboxModule,
-    HttpClientModule
     //RouterModule.forChild(routes)
   ],
   providers:[ SearchService ],

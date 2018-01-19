@@ -2,30 +2,30 @@
 <section class="search-box-wrap">
   <mat-form-field class="example-form-field">
     <input matInput type="text"
-      placeholder="Search" 
+      placeholder="Search"
       (keydown)="term$.next($event)"
       [(ngModel)]="searchValue"/>
-    
-    <button mat-button 
-      *ngIf="searchValue" 
-      matSuffix mat-icon-button 
-      aria-label="Clear" 
+
+    <button mat-button
+      *ngIf="searchValue"
+      matSuffix mat-icon-button
+      aria-label="Clear"
       (click)="clearSearchValue()">
-    
+
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
 
   <nav class="search-box-nav">
-  
-    <button mat-button 
-      mat-icon-button 
+
+    <button mat-button
+      mat-icon-button
       (click)="startSearch()">
       <mat-icon>search</mat-icon>
     </button>
 
-    <button mat-button 
-      mat-icon-button 
+    <button mat-button
+      mat-icon-button
       (click)="showFilter()">
       <mat-icon>filter_list</mat-icon>
     </button>
@@ -42,16 +42,16 @@
     </div>
     <div class="filter-body">
       <div class="filter-panel flex-col">
+
         <mat-form-field
           class="filter-content-field">
           <mat-select placeholder="Only when segment in"
-            [(ngModel)]="segmentIn"
-            multiple>
+            [(ngModel)]="segmentIn" multiple >
             <!--<mat-option>All segments</mat-option>-->
-            <mat-option 
-              *ngFor="let s of segments" 
+            <mat-option
+              *ngFor="let s of segments"
               [value]="s.id">
-              {{ s.label }}
+                {{ s.label }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -62,24 +62,25 @@
             [(ngModel)]="productIn"
             multiple>
             <!--<mat-option>All segments</mat-option>-->
-            <mat-option 
-              *ngFor="let p of products" 
+            <mat-option
+              *ngFor="let p of products"
               [value]="p.id">
               {{ p.label }}
             </mat-option>
           </mat-select>
         </mat-form-field>
+
       </div>
-      
+
       <div class="filter-panel">
         <div class="filter-content-group">
-          
+
           <div class="title">
             Types
           </div>
-          
+
           <div class="content flex-col">
-            <mat-checkbox 
+            <mat-checkbox
               *ngFor="let t of types"
               class="filter-item"
               [name]="t.id"
@@ -106,5 +107,5 @@
     </nav>
 
   </div>
-  
+
 </section>

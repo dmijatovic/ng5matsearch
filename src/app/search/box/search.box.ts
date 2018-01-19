@@ -4,7 +4,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 //To import the entire core set of functionality
 //see https://www.npmjs.com/package/rxjs
 //import 'rxjs/Rx';
-//To import only what you need 
+//To import only what you need
 import { Subject } from 'rxjs/Subject';
 //operators are added this way
 import 'rxjs/add/operator/debounceTime';
@@ -34,7 +34,7 @@ export class SearchBox implements OnInit {
   types:any=[];
   constructor(
     private searchSvc:SearchService
-  ){ 
+  ){
     //debugger
     //console.log("searchbox");
   }
@@ -42,26 +42,31 @@ export class SearchBox implements OnInit {
    * Subscribe to term stream
    */
   ngOnInit() {
-    //hook search button 
-    this.listenForSearchTerm();
+    //console.log("searchbox");
     //get filter options
-    this.getSegments();
+
+    //bug in getSegments but I cannot find it 'quckly'!
+    //this.getSegments();
+
     this.getProducts();
-    this.getTypes()
+    this.getTypes();
+
+    //hook search button
+    this.listenForSearchTerm();
   }
   /* listen to what client types */
   listenForSearchTerm(){
-    this.term$  
+    this.term$
     .debounceTime(500)
-    .distinctUntilChanged()                
+    .distinctUntilChanged()
     .subscribe(
       (find)=>{
-        //debugger  
+        //debugger
         //if you want to trigger only on enter
         //if ([13, 40, 38].includes(find.keyCode)) {
         this.search.emit(find.target.value);
         //}
-        //console.log("Emit search request:", find);                
+        //console.log("Emit search request:", find);
       },
       (e)=>console.error(e)
     );
@@ -69,7 +74,7 @@ export class SearchBox implements OnInit {
   getSegments(){
     this.searchSvc.getSegments()
     .subscribe((d)=>{
-      //debugger
+      debugger
       this.segments = d;
     });
   }
@@ -95,7 +100,7 @@ export class SearchBox implements OnInit {
     let types = [];
     this.types.map((i)=>{
       if (i.checked===true){
-        types.push(i.id); 
+        types.push(i.id);
       }
     });
 
@@ -105,16 +110,17 @@ export class SearchBox implements OnInit {
       products: this.productIn,
       types: types
     }
-    
+
     console.log("start search", search);
   }
+
   /**
    * Clear search value when user click x icon
    */
   clearSearchValue(){
     this.searchValue="";
     this.search.emit(null);
-  }  
+  }
 
   clearFilters(){
 
@@ -125,6 +131,6 @@ export class SearchBox implements OnInit {
   saveFilters(){
 
     console.log("save filters");
-    
+
   }
 }

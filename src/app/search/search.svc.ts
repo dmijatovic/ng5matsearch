@@ -14,12 +14,12 @@ export class SearchService{
     console.log("search service...","started");
   }
   /**
-   * Get list of possible segments to be used in search filter 
+   * Get list of possible segments to be used in search filter
    * (hypothetical example here)
    */
   getSegments(){
     return new Observable((observer)=>{
-      //send array of values 
+      //send array of values
       observer.next(
         [
           {id:'seg1', label:'segment 1'},
@@ -28,14 +28,14 @@ export class SearchService{
           {id:'seg4', label:'segment 4'}
         ]
       );
-      observer.error("");
+      //observer.error("");
       //send complete state
       observer.complete();
     });
-  }  
+  }
   getProducts(){
     return new Observable((observer)=>{
-      //send array of values 
+      //send array of values
       observer.next(
         [
           {id:'prod1', label:'Product 1'},
@@ -47,10 +47,10 @@ export class SearchService{
       //send complete state
       observer.complete();
     });
-  } 
+  }
   getTypes(){
     return new Observable((observer)=>{
-      //send array of values 
+      //send array of values
       observer.next(
         [
           {id:'type1', label:'Type 1', checked:false},
@@ -62,7 +62,7 @@ export class SearchService{
       //send complete state
       observer.complete();
     });
-  }  
+  }
 //-------------------------------------------
 // Here we publish search term and filter changes
 //-------------------------------------------
@@ -77,7 +77,7 @@ export class SearchService{
   search = new BehaviorSubject<any>(this.searchQuery);
   searchQuery$ = this.search.asObservable();
   setSearchQuery(sq){
-    //create new object 
+    //create new object
     //and spread values
     this.searchQuery = {
       ...sq

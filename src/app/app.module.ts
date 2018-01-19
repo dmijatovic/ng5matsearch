@@ -20,43 +20,40 @@ import { FormDemoPage } from './forms/page/form-demo-page';
 
 
 //App services
-//set services here only 
+//set services here only
 //if these are shared throughout whole app
-const routes=[{
+const routes:Routes=[{
   path:'',
   redirectTo:'home',
   pathMatch:'full',
 },{
-  path:'',
+  path:'home',
   component: PageLayout,
-  children:[{    
-    path:'home',
-    component: HomePage  
-  },{
-    path:'search',
+  children:[{
+    path:'',
+    component: HomePage
+  }]
+},{
+  path:'search',
+  component: PageLayout,
+  children:[{
+    path:'',
     component: SearchPage
-  },{
-    path:'dragdrop',
+  }]
+},{
+  path:'dragdrop',
+  component: PageLayout,
+  children:[{
+    path:'',
     component: DragDropPage
-  },{
-    path:'forms',
+  }]
+},{
+  path:'forms',
+  component: PageLayout,
+  children:[{
+    path:'',
     component: FormDemoPage
   }]
-  /*},{
-    path:'home',
-    component: PageLayout,
-    children:[{
-      path:'',
-      component: HomePage
-    }]
-  },{
-    path:'search',
-    component: PageLayout,
-    children:[{
-      path:'',
-      component:SearchPage
-      //loadChildren:'./search/search.module#SearchModule'
-    }]*/
 }]
 
 @NgModule({

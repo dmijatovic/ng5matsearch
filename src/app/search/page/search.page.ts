@@ -11,10 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class SearchPage implements OnInit {
 
   constructor() {
-    //console.log("search page")
   }
 
   ngOnInit() {
+    console.log("search page")
   }
 
   searchFor($event){
