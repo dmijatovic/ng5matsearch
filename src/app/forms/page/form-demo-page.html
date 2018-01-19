@@ -1,9 +1,42 @@
-<p>
-  form-demo-page works!
-</p>
+<header class="page-title-header">
+
+  <div class="page-header-title">
+      <h2>{{pageTitle}}</h2>
+  </div>
+
+  <nav class="page-header-nav">
+
+    <button mat-raised-button
+      color="primary"
+      [disabled]='!formMain.valid'
+      (click)="saveForm()">
+        Save
+    </button>
+
+  </nav>
+</header>
 
 
-<app-form-group 
-  *ngFor="let items of formGroups"
-  [fieldGroup]="items">
-</app-form-group>
+<form [formGroup]='formMain'>
+
+  <section class="form-container">
+
+    <app-form-group
+      *ngFor="let group of formGroups"
+      [style.width]="group.width"
+      [formGroupName]='group.id'
+      [fieldGroup]="group">
+    </app-form-group>
+
+  </section>
+
+</form>
+
+
+
+
+<h4>Main form value</h4>
+<pre>{{ formMain.value | json }}</pre>
+
+<h4>Main form state</h4>
+Valid: {{ formMain.valid }}

@@ -1,0 +1,54 @@
+
+@import '~@angular/material/theming';
+
+:host{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.form-group-section{
+  display:flex;
+  flex-direction:column;
+  border: 1px solid grey;
+
+  .section-title{
+    padding: 16px 8px;
+    font-size: 22px;
+    font-weight: 600;
+    border-bottom: 1px solid grey;
+  }
+
+  .section-body{
+    display:flex;
+    //flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px 8px;
+  }
+
+}
+
+.form-group-section.ng-touched.ng-invalid{
+
+  .section-title{
+    //background-color: red;
+    color: red;
+  }
+
+  .section-title::after{
+    content:'[incomplete]';
+  }
+}
+
+.form-group-section.ng-touched.ng-valid{
+  //border: 1px solid green;
+  .section-title{
+    //background-color: green;
+    //color: green;
+  }
+
+  .section-title::after{
+    content:'[valid]';
+  }
+}

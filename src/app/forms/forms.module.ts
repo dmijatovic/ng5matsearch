@@ -2,13 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms'
 
+import {
+  MatFormFieldModule,
+  MatInputModule, MatRadioModule,
+  MatSelectModule, MatButtonModule,
+  MatDatepickerModule, MatNativeDateModule
+} from '@angular/material';
+
+
 import { FormDemoPage } from './page/form-demo-page';
 import { GroupComponent } from './group/group.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //material modules
+    MatInputModule, MatRadioModule,
+    MatSelectModule, MatFormFieldModule,
+    MatDatepickerModule, MatNativeDateModule,
+    MatButtonModule
   ],
   declarations: [FormDemoPage, GroupComponent]
 })

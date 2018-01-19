@@ -5,7 +5,9 @@ import { Observable } from 'rxjs/Observable';
 export class FormsService {
 
   constructor() { }
-
+  /**
+   *
+   */
   getFielGroups(){
     return new Observable((observer)=>{
 
@@ -13,24 +15,33 @@ export class FormsService {
 
     });
   }
+  /**
+   *
+   * @param data
+   */
+  saveFormData(data){
 
+    console.log("Save form data...", data );
+
+  }
 }
 
-
 const fieldsGroups=[{
-  id:'group1', title:'Name & Birthdate', items:[
+  id:'name', title:'Name & Birthdate', width:'450px',
+  items:[
     { fid:'firstName', label:'First Name',
       controlType:'input', dataType:'text',
-      required:true, default:''
+      required:true, default:'', width:'150px'
     },{ fid:'lastName', label:'Last Name',
       controlType:'input', dataType:'text',
-      required:true, default:''
+      required:true, default:'',width:'270px'
     },{ fid:'birthDate', label:'Date of birth',
       controlType:'datepicker', dataType:'date',
-      required:false, default:null
+      required:false, default:null, width:null
     }
   ]},{
-  id:'group2',title:'Address', items:[
+  id:'address',title:'Address', width:'450px',
+  items:[
     { fid:'street', label:'Street',
       controlType:'input', dataType:'text',
       required:true, default:null

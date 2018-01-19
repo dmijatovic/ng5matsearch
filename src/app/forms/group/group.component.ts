@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import {
-  FormBuilder, FormControl, FormGroup, Validators
+  FormControl, FormGroup, Validators,
+  ControlContainer
 } from '@angular/forms';
 
 @Component({
@@ -10,38 +11,40 @@ import {
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
+  //get field group definitions
   @Input() fieldGroup:any;
 
   groupForm:any;
+  fieldDef:any;
 
   constructor(
-    private fb:FormBuilder
+    public controlContainer:ControlContainer
   ){}
 
   ngOnInit() {
-
-    console.log("FormGroup...fieldGroup", this.fieldGroup);
-
+    //console.log("FormGroup...fieldGroup", this.fieldGroup);
     this.createGroupForm();
   }
 
   createGroupForm(){
-    let fields={};
+    let fgroup={};
     //debugger
 
     this.fieldGroup.items.map((f)=>{
 
       if (f.required){
-        fields[f.fid] = [f.default, Validators.required];
+        fgroup[f.fid] = new FormControl(f.default, Validators.required);
       }else if (f.default){
-        fields[f.fieldId] = [f.default];
+        fgroup[f.fid] = new FormControl(f.default);
       }else{
-        fields[f.fieldId] = [];
+        fgroup[f.fid] = new FormControl();
       }
-    });
-    //debugger
-    this.groupForm = this.fb.group(fields);
 
+    });
+    //copy field definition to local prop
+    this.fieldDef = this.fieldGroup.items;
+    //debugger
+    this.groupForm = new FormGroup(fgroup);
     console.log("FormGroup.groupForm...", this.groupForm);
   }
 

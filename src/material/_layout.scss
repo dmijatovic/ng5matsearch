@@ -1,7 +1,7 @@
 
 /*
 body{
-  
+
 }*/
 
 .app-root{
@@ -22,5 +22,21 @@ body{
     padding: 8px  16px;
 
   }
+}
 
+//** WITHIN PAGE **//
+.page-title-header{
+  display:flex;
+  padding: 16px 0px;
+  flex-wrap: wrap;
+
+  .page-header-title{
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .page-header-nav{
+    display: flex;
+    align-items: center;
+  }
 }

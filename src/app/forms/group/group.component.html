@@ -1,17 +1,92 @@
 
+<section [formGroup] = "controlContainer.control"
+  class="form-group-section">
 
-
-<section>
   <div class="section-title">
-    Group title here
+    {{fieldGroup.title}}
   </div>
 
-  <div *ngFor="let field of fields"
+  <div class="section-body">
+
+  <ng-container *ngFor="let field of fieldDef">
+
+    <!-- INPUT -->
+    <mat-form-field *ngIf="field.controlType=='input'"
+      [style.width]="field.width">
+      <input matInput
+        [placeholder]="field.label"
+        [name]="field.fid"
+        [formControlName]="field.fid"
+        [type]="field.dataType" />
+    </mat-form-field>
+
+    <!-- SELECT -->
+    <mat-form-field *ngIf="field.controlType=='select'">
+      <mat-select
+        [placeholder]="field.label"
+        [formControlName]="field.fid">
+
+        <mat-option *ngFor="let option of field.options"
+          [value]="option.id">
+
+          {{option.label}}
+
+        </mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+    <!-- RADIO -->
+    <mat-form-field *ngIf="field.controlType=='radio'">
+      <mat-radio-group class="example-radio-group"
+        [formControlName]="field.fid">
+
+        <mat-radio-button
+          *ngFor="let option of field.options"
+          [value]="option.id">
+
+          {{option.label}}
+
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-form-field>
+
+    <!-- DATE PICKER -->
+    <mat-form-field *ngIf="field.controlType=='datepicker'">
+
+      <input matInput
+        [matDatepicker]="datePicker"
+        [placeholder]="field.label"
+        [formControlName]="field.fid">
+
+      <mat-datepicker-toggle
+        matSuffix [for]="datePicker">
+      </mat-datepicker-toggle>
+
+      <mat-datepicker #datePicker></mat-datepicker>
+
+    </mat-form-field>
+
+
+  </ng-container>
+
+
+
+  </div>
+
+
+
+<!--
+  <div *ngFor="let field of fieldDef"
     class="field-row">
 
     <label>{{ field.label }}</label>
-    <input 
-      [type]="field.type"/>
-    
+    <input
+      [name]="field.fid"
+      [formControlName]="field.fid"
+      [type]="field.dataType"/>
+
   </div>
+-->
+
 </section>
