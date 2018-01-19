@@ -18,15 +18,28 @@ export class FormsService {
 
 
 const fieldsGroups=[{
-  id:'group1',title:'Name & Birthdate', items:[
-    {fieldId:'firstName',label:'First Name', type:'text', 
-      required:true, value:''},
-    {fieldId:'lastName',label:'Last Name', type:'text', required:true},
-    {fieldId:'birthDate',label:'Date of birth', type:'date', required:false}
+  id:'group1', title:'Name & Birthdate', items:[
+    { fid:'firstName', label:'First Name',
+      controlType:'input', dataType:'text',
+      required:true, default:''
+    },{ fid:'lastName', label:'Last Name',
+      controlType:'input', dataType:'text',
+      required:true, default:''
+    },{ fid:'birthDate', label:'Date of birth',
+      controlType:'datepicker', dataType:'date',
+      required:false, default:null
+    }
   ]},{
   id:'group2',title:'Address', items:[
-    {fieldId:'street',label:'Street', type:'text', required:true},
-    {fieldId:'postcode',label:'Postal code', type:'text', required:true},
-    {fieldId:'city',label:'City', type:'date', required:true}
+    { fid:'street', label:'Street',
+      controlType:'input', dataType:'text',
+      required:true, default:null
+    },{ fid:'postcode',label:'Postal code',
+      controlType:'input', dataType:'text',
+      required:false, default:null
+    },{ fid:'city',label:'City',
+      controlType:'input', dataType:'text',
+      required:false, default:null
+    }
   ]}
 ]

@@ -24,34 +24,25 @@ import { FormDemoPage } from './forms/page/form-demo-page';
 //if these are shared throughout whole app
 const routes:Routes=[{
   path:'',
-  redirectTo:'home',
-  pathMatch:'full',
-},{
-  path:'home',
   component: PageLayout,
+  //we need children
+  //at first level due to
+  // 2-level router outlet
   children:[{
     path:'',
+    redirectTo:'home',
+    pathMatch: 'full'
+  },{
+    path:'home',
     component: HomePage
-  }]
-},{
-  path:'search',
-  component: PageLayout,
-  children:[{
-    path:'',
+  },{
+    path:'search',
     component: SearchPage
-  }]
-},{
-  path:'dragdrop',
-  component: PageLayout,
-  children:[{
-    path:'',
+  },{
+    path:'dragdrop',
     component: DragDropPage
-  }]
-},{
-  path:'forms',
-  component: PageLayout,
-  children:[{
-    path:'',
+  },{
+    path:'forms',
     component: FormDemoPage
   }]
 }]
