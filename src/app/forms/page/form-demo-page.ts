@@ -24,14 +24,17 @@ export class FormDemoPage implements OnInit {
   ){}
 
   ngOnInit() {
-
     this.formSvc.getFielGroups()
     .subscribe((d)=>{
       console.log(d);
       this.createFormGroups(d) ;
     });
   }
-
+  /**
+   * Create form groups based on definitions
+   * received from service
+   * @param groups
+   */
   createFormGroups(groups){
     let gr={};
     //debugger
@@ -42,12 +45,10 @@ export class FormDemoPage implements OnInit {
       gr[g.id] = group;
 
     });
-
     this.formMain = this.fb.group(gr);
     this.formGroups = groups;
-
-    console.log("formMain", this.formMain);
-    console.log("formGroups", this.formGroups);
+    //console.log("formMain", this.formMain);
+    //console.log("formGroups", this.formGroups);
   }
   /**
    * Create form group based on fields

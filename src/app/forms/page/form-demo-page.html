@@ -16,6 +16,11 @@
   </nav>
 </header>
 
+<p>
+  Each card is seprate component and represents formGroup. mainForm
+  object is parent component of this page. It creates all formGroups
+  based on data received from forms.service
+</p>
 
 <form [formGroup]='formMain'>
 
@@ -32,11 +37,18 @@
 
 </form>
 
+<section class="flex-row">
+
+  <div class="flex-col flex-1">
+      <h4>Main form value</h4>
+      <pre>{{ formMain.value | json }}</pre>
+  </div>
+
+  <div class="flex-col flex-1">
+    <h4>Main form state</h4>
+    Valid: {{ formMain.valid }}
+  </div>
+
+</section>
 
 
-
-<h4>Main form value</h4>
-<pre>{{ formMain.value | json }}</pre>
-
-<h4>Main form state</h4>
-Valid: {{ formMain.valid }}
