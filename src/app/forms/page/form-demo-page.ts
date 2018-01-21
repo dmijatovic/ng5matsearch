@@ -26,7 +26,7 @@ export class FormDemoPage implements OnInit {
   ngOnInit() {
     this.formSvc.getFielGroups()
     .subscribe((d)=>{
-      console.log(d);
+      //console.log(d);
       this.createFormGroups(d) ;
     });
   }

@@ -45,7 +45,7 @@ export class GroupComponent implements OnInit {
     this.fieldDef = this.fieldGroup.items;
     //debugger
     this.groupForm = new FormGroup(fgroup);
-    console.log("FormGroup.groupForm...", this.groupForm);
+    //console.log("FormGroup.groupForm...", this.groupForm);
   }
 
 }

@@ -16,13 +16,75 @@ body{
   display:flex;
   flex-direction: column;
 
+  .app-header{
+    display: flex;
+    flex-direction: column;
+    .mat-toolbar-multiple-rows{
+      .mat-toolbar-row{
+        transition: height 0.5s ease-in-out;
+      }
+    }
+  }
+
   .app-body{
     flex:1;
     display:flex;
     padding: 8px  16px;
-
   }
 }
+
+//----------------------------------
+//HEADER RESIZING ON SCROLL
+//----------------------------------
+//LARGE HEADER
+
+.app-page.header-xl{
+  .app-header{
+    .mat-toolbar-multiple-rows{
+      .mat-toolbar-row{
+        height: 124px;
+        //transform: scale(1.5);
+      }
+    }
+  }
+}
+
+//MEDIUM HEADER
+.app-page.header-md{
+  .app-header{
+    position: fixed;
+    top:0; left:0; right:0;
+    .mat-toolbar-multiple-rows{
+      .mat-toolbar-row{
+        height: 84px;
+        //transform: scale(1);
+      }
+    }
+  }
+  .app-body{
+    //84 + 16 = 100px
+    margin-top: 100px;
+  }
+}
+
+//SMALL HEADER
+.app-page.header-sm{
+  .app-header{
+    position: fixed;
+    top:0; left:0; right:0;
+    .mat-toolbar-multiple-rows{
+      min-height: 44px;
+      .mat-toolbar-row{
+        height: 44px;
+      }
+    }
+  }
+  .app-body{
+    //100 + 44 = 144px
+    margin-top: 144px;
+  }
+}
+
 
 //** WITHIN PAGE **//
 .page-title-header{
